@@ -25,6 +25,7 @@ function categoryUchange(z) {
 	var business = ["굿즈", "투잡", "제테크"];
 	var create = ["문학", "음악", "팬픽"];
 	var it = ["홈페이지", "어플리케이션", "프로그래밍 언어"];
+	
 	var target = document.getElementById("categoryD");
 
 	if(z.value == a) var y = cook;
@@ -77,7 +78,7 @@ function categoryUchange(z) {
 <tr>
 	<td class="table-info">카테고리</td>
 	<td>
-	<select class="categoryControll" name="categoryU" id="categoryU">
+	<select class="categoryControll" onchange="categoryUchange(z)" name="categoryU" id="categoryU">
   	<option>대분류</option>
 	<option value="a">요리</option>
 	<option value="b">뷰티</option>
