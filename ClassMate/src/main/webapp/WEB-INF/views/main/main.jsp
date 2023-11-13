@@ -17,7 +17,6 @@
 }
 
 .TOP5{
-	border : 1px solid gray;
 	background-color: #F0C610;
 	display: inline-block;
 	padding: 15px;
