@@ -78,6 +78,44 @@ $(document).ready(function () {
             }
         });
     });
+    
+    function formatDate(dateString) {
+        try {
+            const koreanMonths = {
+                '1월': 'January',
+                '2월': 'February',
+                '3월': 'March',
+                '4월': 'April',
+                '5월': 'May',
+                '6월': 'June',
+                '7월': 'July',
+                '8월': 'August',
+                '9월': 'September',
+                '10월': 'October',
+                '11월': 'November',
+                '12월': 'December'
+            };
+
+            // 예시: "12월 3, 2023"을 "December 3, 2023"로 변환
+            const parts = dateString.split(' ');
+            const standardDate = koreanMonths[parts[0]] + ' ' + parts[1].replace(',', '') + ', ' + parts[2];
+            
+            // 이 부분을 변경하여 날짜를 파싱하도록 수정할 수 있습니다.
+            const parsedDate = new Date(standardDate);
+
+            // 필요에 따라 날짜 형식을 조정할 수 있습니다.
+            const year = parsedDate.getFullYear();
+            const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
+            const day = String(parsedDate.getDate()).padStart(2, '0');
+            
+            return year + '-' + month + '-' + day;
+        } catch (error) {
+            console.error("Error formatting date:", error);
+            return dateString;
+        }
+    }
+    
+    
 
     function displayClassInfo(data) {
         // 클릭 상태에 따라 토글 처리
@@ -87,13 +125,16 @@ $(document).ready(function () {
             $("#classInfoContainer").empty();
             if (data && data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
+                	var classStartFormatted = formatDate(data[i].classStart);
+                    var classEndFormatted = formatDate(data[i].classEnd);
+                    var classDateFormatted = formatDate(data[i].classDate);
                     var htmlContent =
                         '<div style="display: flex;">' +
-                        '<div style="background-color: black; font-size: 30px; color: white; flex: auto; width: 551px;">' +
+                        '<div style="background-color: black; font-size: 30px; color: white; flex: auto; width: 551px; height: 550px;">' +
                             '<div style="padding-top: 50px; padding-left: 50px; padding-bottom: 50px; font-size: 20px;">' +
                                 '강사명 : ' + data[i].teacher + '<br><br>' +
-                                '강의기간<br>' + data[i].classStart + '~' + data[i].classEnd + '<br><br>' +
-                                '모집기간<br>' + data[i].classDate + '~' + data[i].classStart + '<br><br>' +
+                                '강의기간<br>' + classStartFormatted + '~' + classEndFormatted + '<br><br>' +
+                                '모집기간<br>' + classDateFormatted + '~' + classStartFormatted + '<br><br>' +
                                 '모집인원 : ' + data[i].maxCount + '<br>' +
                                 '금액 : ' + parseInt(data[i].expense) + '<br>' +
                             '</div>' +
@@ -117,6 +158,7 @@ $(document).ready(function () {
         // 클릭 상태를 업데이트
         classInfoContainerVisible = !classInfoContainerVisible;
     }
+    
 
     // 커리큘럼 버튼 클릭 시
     $("#classCurriculum").click(function () {
@@ -150,13 +192,16 @@ $(document).ready(function () {
             $("#classCurriculumContainer").empty();
             if (data && data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
+                	var classStartFormatted = formatDate(data[i].classStart);
+                    var classEndFormatted = formatDate(data[i].classEnd);
+                    var classDateFormatted = formatDate(data[i].classDate);
                     var htmlContent =
                         '<div style="display: flex;">' +
-                        '<div style="background-color: black; font-size: 30px; color: white; flex: auto; width: 551px;">' +
+                        '<div style="background-color: black; font-size: 30px; color: white; flex: auto; width: 551px; height: 550px;">' +
                             '<div style="padding-top: 50px; padding-left: 50px; padding-bottom: 50px; font-size: 20px;">' +
                                 '강사명 : ' + data[i].teacher + '<br><br>' +
-                                '강의기간<br>' + data[i].classStart + '~' + data[i].classEnd + '<br><br>' +
-                                '모집기간<br>' + data[i].classDate + '~' + data[i].classStart + '<br><br>' +
+                                '강의기간<br>' + classStartFormatted + '~' + classEndFormatted + '<br><br>' +
+                                '모집기간<br>' + classDateFormatted + '~' + classStartFormatted + '<br><br>' +
                                 '모집인원 : ' + data[i].maxCount + '<br>' +
                                 '금액 : ' + parseInt(data[i].expense) + '<br>' +
                             '</div>' +
