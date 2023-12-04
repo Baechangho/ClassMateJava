@@ -246,7 +246,7 @@ public class MainController {
 	   @GetMapping("/onClassView")
 	   public void onClassView( Class cLass, Model model, HttpSession session) {
 		   List<Class> list = mainService.ClassViewList(cLass);
-//		   logger.info("list : {}", list);
+		   logger.info("list : {}", list);
 //	       logger.info("로그인안에 뭐가 있어? : {}", session.getAttribute("isLogin"));
 
 		   model.addAttribute("list",list);
@@ -258,7 +258,7 @@ public class MainController {
 	   public void offClassView( Class cLass, Model model, HttpSession session, @Value("${spring.datasource.apikey}") String apikey) {
 		   List<Class> list = mainService.ClassViewList(cLass);
 		   Address address = mainService.getAddress(cLass);
-//		   logger.info("address : {}", address);
+		   logger.info("address : {}", list);
 		   model.addAttribute("apikey", apikey);
 		   model.addAttribute("address",address);
 		   model.addAttribute("list",list);

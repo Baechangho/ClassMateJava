@@ -125,7 +125,7 @@
          
          <h1 id="tdHeadH1">${viewEvent.eventName }</h1>
          
-      <div style="width: 1000px; margin: 0 auto;">   
+      <div style="width: 1000px; margin: 0 auto;">
          <span id="tdHeadS2">작성자 &nbsp:&nbsp ${viewEvent.userName }</span>
          <span class="tdHeadS">등록일 &nbsp:&nbsp ${viewEvent.eventDate }</span>
       </div>

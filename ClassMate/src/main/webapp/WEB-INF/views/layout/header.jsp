@@ -264,11 +264,12 @@ a{
 }
 
 #searchInput {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
+	width: 100%;
+    margin-top: 3px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
 }
 
 #searchIcon {
